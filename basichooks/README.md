@@ -163,3 +163,97 @@ export default UseStateExample;
 ---
 
 **Happy Coding!**
+
+
+# React useEffect Example & Notes
+
+This project demonstrates the usage of the `useEffect` hook in React through a simple component. The code explores different patterns and best practices for using `useEffect` for side effects, data fetching, and event listeners.
+
+## What I Learned
+
+- **useEffect** is a powerful React hook for handling side effects in functional components.
+- The dependency array in `useEffect` controls when the effect runs.
+- You can use multiple `useEffect` hooks in a single component for different concerns.
+- Cleanup functions in `useEffect` help prevent memory leaks (e.g., removing event listeners).
+- Data fetching and DOM event handling are common use cases for `useEffect`.
+
+## Code Overview
+
+The component demonstrates:
+
+- Fetching data from an API when a resource type changes.
+- Handling window resize events and updating state accordingly.
+- Using different dependency arrays to control when effects run.
+
+## useEffect Patterns Demonstrated
+
+### 1. Effect runs when a specific state changes
+
+```js
+useEffect(() => {
+  fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
+    .then(response => response.json())
+    .then(json => setItems(json));
+  console.log("Runs when resourceType changes");
+}, [resourceType]);
+```
+- **Runs:** Every time `resourceType` changes.
+- **Use case:** Fetch new data when a filter or tab changes.
+
+### 2. Effect runs only once (on mount)
+
+```js
+useEffect(() => {
+  // fetch(...)
+  console.log("Runs only once on mount");
+}, []);
+```
+- **Runs:** Only once, after the initial render.
+- **Use case:** Initial data fetch, setting up subscriptions.
+
+### 3. Effect runs on every render
+
+```js
+useEffect(() => {
+  console.log("Runs on every render");
+});
+```
+- **Runs:** After every render (no dependency array).
+- **Use case:** Rarely needed; can cause performance issues.
+
+### 4. Effect with cleanup (e.g., event listeners)
+
+```js
+useEffect(() => {
+  const handleResize = () => setWindowSize(window.innerWidth);
+  window.addEventListener('resize', handleResize);
+  console.log("Runs once, sets up resize listener");
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
+```
+- **Runs:** Once on mount, cleans up on unmount.
+- **Use case:** Subscribing/unsubscribing to events, timers, etc.
+
+## Key Notes on useEffect
+
+- **Dependency Array:**
+  - `[]` — runs once (on mount).
+  - `[var1, var2]` — runs when any dependency changes.
+  - Omitted — runs after every render.
+- **Cleanup Function:** Return a function from `useEffect` to clean up (unsubscribe, remove listeners, etc.).
+- **Multiple useEffects:** You can use as many as needed for different concerns.
+- **Common Pitfalls:** Forgetting the dependency array can cause infinite loops or missed updates.
+
+## Example UI
+
+- Buttons to switch between "Posts", "Users", and "Comments".
+- Displays fetched items as JSON.
+- Shows current window width, updates on resize.
+
+---
+
+**References:**
+- [React Docs: useEffect](https://react.dev/reference/react/useEffect)
+- [React Docs: Using the Effect Hook](https://legacy.reactjs.org/docs/hooks-effect.html)
