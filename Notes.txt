@@ -1,2 +1,60 @@
 All hooks covered in this repo
   1. useState
+
+
+
+
+DSA notes
+bits manipulation
+1. 
+
+
+
+
+Genreal String Trick 
+1. 
+String s = "123";
+int num = Integer.parseInt(s);
+System.out.println(num + 1);  // Output: 124
+
+2. string.format(%03d, number) 007
+    string.format(%06.3f,number) 007.000
+
+
+
+
+
+
+BITS MANUPLIATION
+ 1. Check if a number is even or odd
+
+The least significant bit (LSB) of even numbers is 0, and for odd numbers it's 1.
+🔹 2. Swap two numbers without a temporary variable
+
+Uses XOR to swap values.
+🔹 3. Check if a number is a power of 2
+
+Only one bit is set in powers of 2.
+🔹 4. Count the number of set bits (Hamming weight)
+
+Efficient way to count 1s in binary representation.
+🔹 5. Turn off the rightmost set bit
+
+Useful in many algorithms like counting set bits.
+🔹 6. Isolate the rightmost set bit
+
+Gives a number with only the rightmost set bit of n.
+🔹 7. Check if a number is a power of 4
+
+As discussed earlier.
+🔹 8. Find the position of the rightmost set bit
+
+Gives the index (0-based) of the rightmost set bit.
+🔹 9. Set or clear a specific bit
+Set bit at position i:
+
+Clear bit at position i:
+
+🔹 10. Toggle a specific bit
+
+Would you like me to show how these tricks can be used in real-world problems or competitive programming challenges?
