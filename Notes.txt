@@ -1,13 +1,20 @@
 All hooks covered in this repo
   1. useState
 
+tanStack query
+   or
+react query 
+(handle caching and validation)
 
+for the dev-tools(flower one)
+<ReactQueryDevtools/> 
 
-
-DSA notes
-bits manipulation
-1. 
-
+have to read convertion in java
+string to int 
+int to array
+int to string
+string to array 
+(vice-versa of all)
 
 
 
@@ -58,3 +65,57 @@ Clear bit at position i:
 🔹 10. Toggle a specific bit
 
 Would you like me to show how these tricks can be used in real-world problems or competitive programming challenges?
+
+
+
+
+
+
+#interview Question
+
+ 1- There's a page that is slow. How would you pinpoint the issue and how would you fix it ?
+
+2- There's a button that when you click on it, it fires an event. Make sure that the user can click the button again after 2 second ( disable the button ). How would you implement this ?
+
+3- What's the difference between state and prop?
+
+4- How would you implement accessibility?
+
+5- What's the difference between justify around and justify even (CSS)?
+
+6- What's the difference between git merge and rebase?
+
+7- What's cherry pick in git?
+
+8- What's the difference between type and interface in typescript?
+
+9- How can you reduce unnecessary rerenders ? 
+
+
+
+
+
+import React, { useState } from 'react';
+
+const MyComponent = React.lazy(() => import('./MyComponent'));
+
+function App() {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShow(true)}>Load Component</button>
+      {show && (
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <MyComponent />
+        </React.Suspense>
+      )}
+    </div>
+  );
+}
+
+export default App;
+
+React.lazy() is used to lazy-load the MyComponent module.
+React.Suspense provides a fallback UI (e.g., a loading spinner) while the lazy-loaded component is being fetched.
+
